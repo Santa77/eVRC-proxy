@@ -1,6 +1,8 @@
 # TP_Reader
 TP_Reader je lokalny http service urceny pre OS Windows, ktory umoznuje akemukolvek lokalnemu IS citat pomocou pripojenej citacky zaznamy z elektronickeho (cipoveho) technickeho preukazu motoroveho vozidla.
 
+Implementacia pre ine OS (Linux, MAC OS) je planovana do buducna (zatial mam len WIN)
+
 Pomocou jednoducheho HTTP GET volania na localhost obdrzi volajuci IS kompletnu informaciu o vozidle ktoreho elektronicky technicky preukaz (maly TP s chipom) je zasunuty v citacke.
 
 Do buducna zvazujem aj lokalne poskytovany WS, kde by boli distribuovane aj eventy o tom, ked sa karta zasunie ci vysunie z citacky...
