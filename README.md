@@ -5,7 +5,7 @@ Implementacia je pisana pod Node.JS a je zatial testovana pre MS Windows a Linux
 
 Pomocou jednoducheho HTTP GET volania na localhost obdrzi volajuci IS kompletnu informaciu o vozidle ktoreho elektronicky technicky preukaz (maly TP s chipom) je zasunuty v citacke.
 
-Do blizkej buducnosti zvazujem aj lokalne poskytovany WS, kde by boli distribuovane aj eventy o tom, ked sa karta zasunie ci vysunie z citacky...
+Do blizkej buducnosti zvazujem aj lokalne poskytovany WS, kde by boli distribuovane aj eventy o tom, ked sa karta zasunie ci vysunie z citacky atp...
 
 Priklad volania jednoducheho volania z vannila js:
 
