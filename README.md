@@ -87,7 +87,7 @@ Vysledny JSON objekt:
     engine_id: '4M1234V',
     color: 'ZLTA METALIZA - ZLATA/METALLIC GOLDEN YELLOW',
     max_construct_speed: '251 km.h-1',
-    noice: [
+    noise: [
       { id: 1, value: '80.0 dB(A)' },
       { id: 2, value: '4000 min-1' },
       { id: 3, value: '75.0 dB(A)' }
