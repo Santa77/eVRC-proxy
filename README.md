@@ -1,4 +1,4 @@
-# TP_Reader
+# eVRC-proxy
 TP_Reader je lokalny http service (zatial) urceny pre OS Windows, ktory umoznuje akemukolvek lokalnemu IS citat pomocou pripojenej citacky zaznamy z elektronickeho (cipoveho) technickeho preukazu motoroveho vozidla.
 
 Implementacia pre ine OS (Linux, MAC OS) je planovana do buducna (zatial mam len WIN)
