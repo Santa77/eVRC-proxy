@@ -1,11 +1,11 @@
 # eVRC-proxy
-TP_Reader je lokalny http service (zatial) urceny pre OS Windows, ktory umoznuje akemukolvek lokalnemu IS citat pomocou pripojenej citacky zaznamy z elektronickeho (cipoveho) technickeho preukazu motoroveho vozidla.
+eVRC-proxy je lokalny http service kodnuty v NodeJS, ktory umoznuje akemukolvek lokalnemu IS citat pomocou pripojenej citacky zaznamy z elektronickeho (cipoveho) technickeho preukazu motoroveho vozidla.
 
-Implementacia pre ine OS (Linux, MAC OS) je planovana do buducna (zatial mam len WIN)
+Implementacia pre testovana pre MS Windows a Linux (Raspberry Pi), planujem coskoro testy pre OSX
 
 Pomocou jednoducheho HTTP GET volania na localhost obdrzi volajuci IS kompletnu informaciu o vozidle ktoreho elektronicky technicky preukaz (maly TP s chipom) je zasunuty v citacke.
 
-Do buducna zvazujem aj lokalne poskytovany WS, kde by boli distribuovane aj eventy o tom, ked sa karta zasunie ci vysunie z citacky...
+Do blizkej buducnosti zvazujem aj lokalne poskytovany WS, kde by boli distribuovane aj eventy o tom, ked sa karta zasunie ci vysunie z citacky...
 
 Priklad volania jednoducheho volania z vannila js:
 
@@ -26,95 +26,89 @@ Vysledny JSON objekt:
 
 ```
 {
-   "s_ATR":"3BD21802C10A31FE58C80D51",
-   "s_Doklad":"Registracne osvedcenie pre vozidlo",
-   "s_Krajina":"Slovenska Republika",
-   "r_Obalka_A":{
-      "s_verzia":"1.0",
-      "s_stat":"Slovenska republika",
-      "s_stat2":"",
-      "s_organ":"Ministerstvo vnutra Slovenskej republiky",
-      "s_sub_organ":"",
-      "s_charset":"00",
-      "s_id_dokladu":"ALA00000",
-      "s_ecv":"HD999SH",
-      "s_d_p_reg":"YYYYMMDD",
-      "r_osobne_udaje":{
-         "r_drzitel":{
-            "s_priezvisko":"DEMO DRZITEL s.r.o.",
-            "s_ine":"",
-            "s_adresa":"Horna Dolna c.999"
-         },
-         "s_rola":"01"
-      },
-      "r_vozidlo":{
-         "s_znacka":"PORSCHE",
-         "s_typ":"CAYENNE GTS 9PA/EP22/-",
-         "s_oznacenie":"PORSCHE"
-      },
-      "s_ICV":"WP1VINVINVINVINVI",
-      "s_hmotnost_max":"3080 kg",
-      "s_hmotnost_pohot":"2320 kg",
-      "s_platnost":"YYYYMMDD",
-      "s_d_reg":"YYYYMMDD",
-      "s_tschval":"e13*2001/*116*0089*08",
-      "r_motor":{
-         "s_objem":"4806.0 cm3",
-         "s_max_vykon":"298.00 kW",
-         "s_palivo":"BA 98 B"
-      },
-      "s_vykon_hm":"",
-      "r_miesta":{
-         "s_sedenie":"5",
-         "s_statie":"0"
-      }
-   },
-   "r_Obalka_B":{
-      "s_verzia":"0",
-      "r_osobne_udaje_A7":{
-         "s_priezvisko":"VUB Leasing, a.s.",
-         "s_ine":"",
-         "s_adresa":"Bratislava - Ruzinov, Mlynske Nivy 1"
-      },
-      "r_osobne_udaje_A8":{
-         "s_priezvisko":"",
-         "s_ine":"",
-         "s_adresa":""
-      },
-      "r_osobne_udaje_A9":{
-         "s_priezvisko":"",
-         "s_ine":"",
-         "s_adresa":""
-      },
-      "s_kategoria_vozidla":"M1G",
-      "s_pocet_naprav":"2",
-      "s_razvor":"2855 mm",
-      "s_hm_nal_vozidla1":"",
-      "s_hm_nal_vozidla2":"6580 kg",
-      "s_vaha_napr1":"1455 kg",
-      "s_vaha_napr2":"1680 kg",
-      "s_vaha_napr3":"",
-      "s_vaha_napr4":"",
-      "s_vaha_napr5":"",
-      "s_tahane_brzdene":"3500 kg",
-      "s_tahane_nebrzdene":"750 kg",
-      "s_max_kr_otacky":"6500 min-1",
-      "s_cislo_motora":"4MXXXXX",
-      "s_farba":"ZLTA METALIZA - ZLATA/METALLIC GOLDEN YELLOW",
-      "s_max_konstrukcna_rych":"251 km.h-1",
-      "s_hluk1":"80.0 dB(A)",
-      "s_hluk2":"4000 min-1",
-      "s_hluk3":"75.0 dB(A)",
-      "s_emis_co":".2250 g.km-1",
-      "s_emis_hc":".0640 g.km-1",
-      "s_emis_nox":".3230 g.km-1",
-      "s_emis_hcnox":"",
-      "s_emis_d_part":"",
-      "s_emis_d_abs":"",
-      "s_emis_co2":"310 g.km-1",
-      "s_spotreba_komb":"13.9 l.100 km-1",
-      "s_spotreba_ec_kat":"51-02",
-      "s_nadrz":"100.0 l"
-   }
+  s_Document_Name: 'Registracne osvedcenie pre vozidlo',
+  s_Country: 'Slovenska Republika',
+  Registration: {
+    first_registration_date: '20080225',
+    version: '0',
+    document: {
+      issuing_state: 'Slovenska republika',
+      issuing_state_desc: '',
+      competent_authority: 'Ministerstvo vnutra Slovenskej republiky',
+      issuing_authority: '',
+      charset: '00',
+      unambiguous_number: 'ALK97654'
+    },
+    registration_number: 'ZA123AA',
+    user: {
+      legal_name: 'HornaDolna s.r.o.',
+      first_name: '',
+      address: 'Horna Dolna, Hlavna 2',
+      role: '01'
+    },
+    description: {
+      brand: 'PORSCHE',
+      model: 'CAYENNE GTS 9PA/EP22/-',
+      commercial_description: 'PORSCHE'
+    },
+    VIN: 'WP1234567890-1234',
+    max_permissible_laden_mass: '3080 kg',
+    mass: '2320 kg',
+    expiry_date: '20230121',
+    issuing_date: '20080225',
+    type_approval_number: 'e13*2001/*116*0089*08',
+    engine: {
+      engine_capacity: '4806.0 cm3',
+      max_net_power: '298.00 kW',
+      fuel_type: 'BA 98 B'
+    },
+    power_weight_ratio: '',
+    seats: { seats_number: '5', standing_places_number: '0' },
+    owner: {
+      legal_name: 'VUB Leasing, a.s.',
+      first_name: '',
+      address: 'Bratislava - Ruzinov, Mlynske Nivy 1'
+    },
+    s_hm_nal_vozidla1: '',
+    s_hm_nal_vozidla2: '6580 kg',
+    vehicle_category: 'M1G',
+    axies_number: '2',
+    gauge_wheeltrack: '2855 mm',
+    axle: [
+      { id: 1, max_weight: '1455 kg' },
+      { id: 2, max_weight: '1680 kg' },
+      { id: 3, max_weight: '' },
+      { id: 4, max_weight: '' },
+      { id: 5, max_weight: '' }
+    ],
+    pull_braging: '3500 kg',
+    pull_non_braging: '750 kg',
+    rpm_maximum: '6500 min-1',
+    engine_id: '4M1234V',
+    color: 'ZLTA METALIZA - ZLATA/METALLIC GOLDEN YELLOW',
+    max_construct_speed: '251 km.h-1',
+    noice: [
+      { id: 1, value: '80.0 dB(A)' },
+      { id: 2, value: '4000 min-1' },
+      { id: 3, value: '75.0 dB(A)' }
+    ],
+    emissions: {
+      co: '.2250 g.km-1',
+      hc: '.0640 g.km-1',
+      nox: '.3230 g.km-1',
+      hcnox: '',
+      dbg_part: '',
+      dbg_abs: '',
+      co2: '310 g.km-1'
+    },
+    consumption: {
+      combined: '13.9 l.100 km-1',
+      dbg_ec_kat: '51-02',
+      tank_volume: '100.0 l'
+    }
+  }
 }
 ```
+
+
+Coskoro pribudnu aj zdrojove texty plus releases pre jednotlive OS...
