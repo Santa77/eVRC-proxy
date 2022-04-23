@@ -1,7 +1,7 @@
 # eVRC-proxy
 eVRC-proxy je lokalny http service kodnuty v NodeJS, ktory umoznuje akemukolvek lokalnemu IS citat pomocou pripojenej citacky zaznamy z elektronickeho (cipoveho) technickeho preukazu motoroveho vozidla.
 
-Implementacia pre testovana pre MS Windows a Linux (Raspberry Pi), planujem coskoro testy pre OSX
+Implementacia je pisana pod Node.JS a je zatial testovana pre MS Windows a Linux (Raspberry Pi), planujem coskoro testy pre OSX
 
 Pomocou jednoducheho HTTP GET volania na localhost obdrzi volajuci IS kompletnu informaciu o vozidle ktoreho elektronicky technicky preukaz (maly TP s chipom) je zasunuty v citacke.
 
