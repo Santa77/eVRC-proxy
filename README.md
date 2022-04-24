@@ -11,7 +11,7 @@ Priklad volania jednoducheho volania z vannila js:
 
 ```
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost:26453/technicak");
+xhr.open("GET", "http://localhost:26453/api/technicak");
 
 xhr.onreadystatechange = function () {
    if (xhr.readyState === 4 && xhr.status == 200) {
