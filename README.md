@@ -1,14 +1,19 @@
 # eVRC-proxy
-eVRC-proxy je lokalny http service kodnuty v NodeJS, ktory umoznuje akemukolvek lokalnemu IS citat pomocou pripojenej citacky zaznamy z elektronickeho (cipoveho) technickeho preukazu motoroveho vozidla.
+eVRC-proxy is local REST API service to read Electronic Vehicle Registration Card (eVRC) issued at EU.
 
-Implementacia je pisana pod Node.JS a je zatial testovana pre MS Windows a Linux (Raspberry Pi), planujem coskoro testy pre OSX
+Tested on SK eVRCs
 
-Pomocou jednoducheho HTTP GET volania na localhost obdrzi volajuci IS kompletnu informaciu o vozidle ktoreho elektronicky technicky preukaz (maly TP s chipom) je zasunuty v citacke.
+## how to run
+```
+node start
+```
 
-Do blizkej buducnosti zvazujem aj lokalne poskytovany WS, kde by boli distribuovane aj eventy o tom, ked sa karta zasunie ci vysunie z citacky atp...
+## how to build binary
+```
+pkg .
+```
 
-Priklad volania jednoducheho volania z vannila js:
-
+## how to use
 ```
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "http://localhost:26453/api/technicak");
@@ -22,7 +27,7 @@ xhr.onreadystatechange = function () {
 xhr.send();
 ```
 
-Vysledny JSON objekt:
+In reply you will get JSON object with data from card
 
 ```
 {

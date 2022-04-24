@@ -1,0 +1,103 @@
+<h1 id="evrc-proxy">eVRC-proxy</h1>
+<p>eVRC-proxy is local REST API service to read Electronic Vehicle Registration Card (eVRC) issued at EU.</p>
+<p>Tested on SK eVRCs</p>
+<h2 id="how-to-run">how to run</h2>
+<pre><code><span class="hljs-keyword">node</span> <span class="hljs-title">start</span>
+</code></pre><h2 id="how-to-build-binary">how to build binary</h2>
+<pre><code>pkg .
+</code></pre><h2 id="how-to-use">how to use</h2>
+<pre><code>let xhr = new XMLHttpRequest();
+xhr.open(<span class="hljs-string">"<span class="hljs-keyword">GET</span>"</span>, <span class="hljs-string">"http://localhost:26453/api/technicak"</span>);
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === <span class="hljs-number">4</span> &amp;&amp; xhr.status == <span class="hljs-number">200</span>) {
+      var jsonResponse = JSON.parse(xhr.responseText);
+      console.log(jsonResponse);
+   }};
+
+xhr.send();
+</code></pre><p>In reply you will get JSON object with data from card</p>
+<pre><code>{
+  <span class="hljs-attribute">s_Document_Name</span>: <span class="hljs-string">'Registracne osvedcenie pre vozidlo'</span>,
+  <span class="hljs-attribute">s_Country</span>: <span class="hljs-string">'Slovenska Republika'</span>,
+  <span class="hljs-attribute">Registration</span>: {
+    <span class="hljs-attribute">first_registration_date</span>: <span class="hljs-string">'20080225'</span>,
+    <span class="hljs-attribute">version</span>: <span class="hljs-string">'0'</span>,
+    <span class="hljs-attribute">document</span>: {
+      <span class="hljs-attribute">issuing_state</span>: <span class="hljs-string">'Slovenska republika'</span>,
+      <span class="hljs-attribute">issuing_state_desc</span>: <span class="hljs-string">''</span>,
+      <span class="hljs-attribute">competent_authority</span>: <span class="hljs-string">'Ministerstvo vnutra Slovenskej republiky'</span>,
+      <span class="hljs-attribute">issuing_authority</span>: <span class="hljs-string">''</span>,
+      <span class="hljs-attribute">charset</span>: <span class="hljs-string">'00'</span>,
+      <span class="hljs-attribute">unambiguous_number</span>: <span class="hljs-string">'ALK97654'</span>
+    },
+    <span class="hljs-attribute">registration_number</span>: <span class="hljs-string">'ZA123AA'</span>,
+    <span class="hljs-attribute">user</span>: {
+      <span class="hljs-attribute">legal_name</span>: <span class="hljs-string">'HornaDolna s.r.o.'</span>,
+      <span class="hljs-attribute">first_name</span>: <span class="hljs-string">''</span>,
+      <span class="hljs-attribute">address</span>: <span class="hljs-string">'Horna Dolna, Hlavna 2'</span>,
+      <span class="hljs-attribute">role</span>: <span class="hljs-string">'01'</span>
+    },
+    <span class="hljs-attribute">description</span>: {
+      <span class="hljs-attribute">brand</span>: <span class="hljs-string">'PORSCHE'</span>,
+      <span class="hljs-attribute">model</span>: <span class="hljs-string">'CAYENNE GTS 9PA/EP22/-'</span>,
+      <span class="hljs-attribute">commercial_description</span>: <span class="hljs-string">'PORSCHE'</span>
+    },
+    <span class="hljs-attribute">VIN</span>: <span class="hljs-string">'WP1234567890-1234'</span>,
+    <span class="hljs-attribute">max_permissible_laden_mass</span>: <span class="hljs-string">'3080 kg'</span>,
+    <span class="hljs-attribute">mass</span>: <span class="hljs-string">'2320 kg'</span>,
+    <span class="hljs-attribute">expiry_date</span>: <span class="hljs-string">'20230121'</span>,
+    <span class="hljs-attribute">issuing_date</span>: <span class="hljs-string">'20080225'</span>,
+    <span class="hljs-attribute">type_approval_number</span>: <span class="hljs-string">'e13*2001/*116*0089*08'</span>,
+    <span class="hljs-attribute">engine</span>: {
+      <span class="hljs-attribute">engine_capacity</span>: <span class="hljs-string">'4806.0 cm3'</span>,
+      <span class="hljs-attribute">max_net_power</span>: <span class="hljs-string">'298.00 kW'</span>,
+      <span class="hljs-attribute">fuel_type</span>: <span class="hljs-string">'BA 98 B'</span>
+    },
+    <span class="hljs-attribute">power_weight_ratio</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">seats</span>: { <span class="hljs-attribute">seats_number</span>: <span class="hljs-string">'5'</span>, <span class="hljs-attribute">standing_places_number</span>: <span class="hljs-string">'0'</span> },
+    <span class="hljs-attribute">owner</span>: {
+      <span class="hljs-attribute">legal_name</span>: <span class="hljs-string">'VUB Leasing, a.s.'</span>,
+      <span class="hljs-attribute">first_name</span>: <span class="hljs-string">''</span>,
+      <span class="hljs-attribute">address</span>: <span class="hljs-string">'Bratislava - Ruzinov, Mlynske Nivy 1'</span>
+    },
+    <span class="hljs-attribute">s_hm_nal_vozidla1</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">s_hm_nal_vozidla2</span>: <span class="hljs-string">'6580 kg'</span>,
+    <span class="hljs-attribute">vehicle_category</span>: <span class="hljs-string">'M1G'</span>,
+    <span class="hljs-attribute">axies_number</span>: <span class="hljs-string">'2'</span>,
+    <span class="hljs-attribute">gauge_wheeltrack</span>: <span class="hljs-string">'2855 mm'</span>,
+    <span class="hljs-attribute">axle</span>: [
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">max_weight</span>: <span class="hljs-string">'1455 kg'</span> },
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">max_weight</span>: <span class="hljs-string">'1680 kg'</span> },
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attribute">max_weight</span>: <span class="hljs-string">''</span> },
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attribute">max_weight</span>: <span class="hljs-string">''</span> },
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">5</span>, <span class="hljs-attribute">max_weight</span>: <span class="hljs-string">''</span> }
+    ],
+    <span class="hljs-attribute">pull_braging</span>: <span class="hljs-string">'3500 kg'</span>,
+    <span class="hljs-attribute">pull_non_braging</span>: <span class="hljs-string">'750 kg'</span>,
+    <span class="hljs-attribute">rpm_maximum</span>: <span class="hljs-string">'6500 min-1'</span>,
+    <span class="hljs-attribute">engine_id</span>: <span class="hljs-string">'4M1234V'</span>,
+    <span class="hljs-attribute">color</span>: <span class="hljs-string">'ZLTA METALIZA - ZLATA/METALLIC GOLDEN YELLOW'</span>,
+    <span class="hljs-attribute">max_construct_speed</span>: <span class="hljs-string">'251 km.h-1'</span>,
+    <span class="hljs-attribute">noise</span>: [
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">value</span>: <span class="hljs-string">'80.0 dB(A)'</span> },
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">value</span>: <span class="hljs-string">'4000 min-1'</span> },
+      { <span class="hljs-attribute">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attribute">value</span>: <span class="hljs-string">'75.0 dB(A)'</span> }
+    ],
+    <span class="hljs-attribute">emissions</span>: {
+      <span class="hljs-attribute">co</span>: <span class="hljs-string">'.2250 g.km-1'</span>,
+      <span class="hljs-attribute">hc</span>: <span class="hljs-string">'.0640 g.km-1'</span>,
+      <span class="hljs-attribute">nox</span>: <span class="hljs-string">'.3230 g.km-1'</span>,
+      <span class="hljs-attribute">hcnox</span>: <span class="hljs-string">''</span>,
+      <span class="hljs-attribute">dbg_part</span>: <span class="hljs-string">''</span>,
+      <span class="hljs-attribute">dbg_abs</span>: <span class="hljs-string">''</span>,
+      <span class="hljs-attribute">co2</span>: <span class="hljs-string">'310 g.km-1'</span>
+    },
+    <span class="hljs-attribute">consumption</span>: {
+      <span class="hljs-attribute">combined</span>: <span class="hljs-string">'13.9 l.100 km-1'</span>,
+      <span class="hljs-attribute">dbg_ec_kat</span>: <span class="hljs-string">'51-02'</span>,
+      <span class="hljs-attribute">tank_volume</span>: <span class="hljs-string">'100.0 l'</span>
+    }
+  }
+}
+</code></pre><p>Coskoro pribudnu aj zdrojove texty plus releases pre jednotlive OS...</p>
