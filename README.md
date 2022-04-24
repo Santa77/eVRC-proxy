@@ -3,12 +3,23 @@ eVRC-proxy is local REST API service to read Electronic Vehicle Registration Car
 
 Tested on SK eVRCs
 
+## how to prepare
+```
+npm install
+```
+
+### additional steps 4 linux
+```
+apt-get install libpcsclite1 libpcsclite-dev pcscd
+```
+
 ## how to run
 ```
-node start
+npm start
 ```
 
 ## how to build binary
+You can modify package.json, targets section. Then build with:
 ```
 pkg .
 ```
