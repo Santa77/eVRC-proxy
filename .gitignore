@@ -3,3 +3,4 @@ build
 node_modules
 aa
 old
+.DS_Store
